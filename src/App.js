@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = { weatherData: undefined };
+  async componentDidMount() {
+    const weatherData = await this.getWeather();
+    this.setState({ weatherData: weatherData });
+  }
+
+  getWeather = async () => {
+    const API_KEY = "";
+    const CITY = "gothenburg";
+    try {
+      const api_call = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=metric`
+      );
+
+      const response = await api_call.json();
+      if (response.cod === 200) {
+        console.log("Succesful fetch");
+        console.log(response);
+      } else {
+        alert(`${response.cod}: ${response.message}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  render() {
+    console.log(this.state.weatherData);
+    return <></>;
+  }
 }
-
-export default App;
