@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import temperatur from "./components/weatherinfo";
 
+<temperatur />
 export default class App extends Component {
   state = { weatherData: undefined };
   async componentDidMount() {
@@ -8,7 +10,7 @@ export default class App extends Component {
   }
 
   getWeather = async () => {
-    const API_KEY = "";
+    const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
     const CITY = "gothenburg";
     try {
       const api_call = await fetch(
@@ -29,6 +31,7 @@ export default class App extends Component {
 
   render() {
     console.log(this.state.weatherData);
+    
     return <></>;
   }
 }
