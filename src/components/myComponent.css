@@ -1,5 +1,5 @@
 HTML{
-    background-color: aqua;
+    background-color: rgb(110, 197, 197);
     font-size: larger;
     color:azure;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -15,4 +15,8 @@ HTML{
 h1 {
     font-size: larger;
     color:azure;
+}
+
+.flex-items{
+    display: flexbox;
 }

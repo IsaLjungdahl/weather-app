@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import temperatur from "./components/weatherinfo";
+import SearchBar from "./components/SearchBar";
+import WeatherInfo from "./components/WeatherInfo";
 
-<temperatur />
 export default class App extends Component {
   state = { weatherData: undefined };
   async componentDidMount() {
-    const weatherData = await this.getWeather();
+    const weatherData = await this.getWeather("malmö");
+
     this.setState({ weatherData: weatherData });
   }
 
-  getWeather = async () => {
+  getWeather = async (city) => {
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-    const CITY = "gothenburg";
+    const CITY = city;
     try {
       const api_call = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=metric`
@@ -19,8 +20,7 @@ export default class App extends Component {
 
       const response = await api_call.json();
       if (response.cod === 200) {
-        console.log("Succesful fetch");
-        console.log(response);
+        return response;
       } else {
         alert(`${response.cod}: ${response.message}`);
       }
@@ -29,9 +29,20 @@ export default class App extends Component {
     }
   };
 
+  updateWeather = async (CITY) => {
+    const weatherData = await this.getWeather(CITY);
+    this.setState({ weatherData: weatherData });
+  };
+
   render() {
-    console.log(this.state.weatherData);
-    
-    return <></>;
+    return (
+      <>
+        {this.state.weatherData && (
+          <WeatherInfo data={this.state.weatherData} />
+        )}
+
+        <SearchBar parentCallBack={this.updateWeather} />
+      </>
+    );
   }
 }
