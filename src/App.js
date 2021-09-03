@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import SearchBar from "./components/SearchBar";
 import WeatherInfo from "./components/WeatherInfo";
-import "./components/myComponent.css";
-
-<div className="Header">
-  <h1>Hur är vädret</h1>
-</div>;
 
 export default class App extends Component {
   state = { weatherData: undefined };
@@ -41,13 +36,23 @@ export default class App extends Component {
 
   render() {
     return (
-      <>
-        <SearchBar parentCallBack={this.updateWeather} />
-
-        {this.state.weatherData && (
-          <WeatherInfo data={this.state.weatherData} />
-        )}
-      </>
+      <div className="app">
+        <div className="main">
+          <div className="container">
+            <div className="search-box">
+              <SearchBar
+                className="searchbar"
+                parentCallBack={this.updateWeather}
+              />
+            </div>
+            <div className="weather">
+              {this.state.weatherData && (
+                <WeatherInfo data={this.state.weatherData} />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
-import "./myComponent.css";
 import React, { Component } from "react";
+import "../App.css";
 
 export default class SearchBar extends Component {
   state = { value: "" };
@@ -38,15 +38,23 @@ export default class SearchBar extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Skriv in vilken stad du vill se vädret för:
+          <div className="header">
+            <h1>
+              Conversation about the weather is the last refuge of the
+              unimaginative.
+            </h1>
+
+            <h2>Oscar Wilde</h2>
+          </div>
           <br />
           <input
             type="text"
             value={this.state.value}
             onChange={this.handleChange}
+            placeholder="Type the city you want to know about"
           />
         </label>
-        <input type="submit" value="ok" />
+        <input className="submitbtn" type="submit" value="weather" />
       </form>
     );
   }
