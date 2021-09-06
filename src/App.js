@@ -45,7 +45,7 @@ export default class App extends Component {
                 parentCallBack={this.updateWeather}
               />
             </div>
-            <div className="weather">
+            <div className="weather-info">
               {this.state.weatherData && (
                 <WeatherInfo data={this.state.weatherData} />
               )}

@@ -21,11 +21,13 @@
   );
 }
 
-.form-box {
-  display: flex;
-  width: 100%;
-  padding: 20px;
-  justify-content: center;
+.main .container {
+  height: 400px;
+  width: auto;
+  margin-top: -140px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  text-align: center;
 }
 
 .header {
@@ -46,7 +48,7 @@
   font-size: medium;
 }
 input[placeholder] {
-  color: navy;
+  color: #60a3bc28;
 }
 input[type="text"] {
   background-color: rgba(220, 237, 245, 0.521);
@@ -86,40 +88,26 @@ input[type="text"]:focus {
 }
 
 .weather {
-  padding: 3vh;
+  padding: 5vh;
   font-size: medium;
   font-family: "Special Elite", cursive;
   color: rgb(220, 237, 245);
   text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 2vh;
+  row-gap: 3vh;
 }
 
-.actual_temp {
+.weather > box {
   box-sizing: border-box;
-  display: inline-flex;
-  flex-direction: column;
   height: 5vh;
-  justify-content: space-around;
-  padding: 3vh;
-}
-
-.feels_like {
-  box-sizing: border-box;
-  display: inline-flex;
-  flex-direction: column;
-  height: 5vh;
-  justify-content: space-around;
-  padding: 3vh;
+  align-items: center;
+  display: grid;
+  padding: 5vh;
+  text-align: center;
 }
 
 .weather h1 {
   font-size: medium;
-}
-
-.main .container {
-  height: 400px;
-  width: auto;
-  margin-top: -140px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 5%;
-  text-align: center;
 }
